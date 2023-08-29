@@ -1,0 +1,43 @@
+<div class="row row-cols-md-6">
+  <div>
+      <img class="img-thumbnail float-start" src="{{articulo.imagen}}">
+  </div>
+  <div>{{articulo.nombre}}</div>
+  <div>{{articulo.precio | currency: " "}} €</div>
+  <div>
+    <button (click)="decUnits(articulo)" class="btn btn-outline-danger">-</button>
+  <input type="text" class="form-control" disabled value="{{articulo.units}}">
+  <button (click)="incUnits(articulo)"  class="btn btn-outline-danger">+</button>
+  </div>
+  <div>{{articulo.precio*articulo.units | currency: " "}} €</div>
+  <div>
+<button class="btn btn-outline-danger" (click)="deleteArticulo()">X</button>
+  </div>
+</div>
+
+<style>
+  div {
+ padding-left: 25px;
+
+  }
+img.img-thumbnail {
+  width:100px;
+}
+
+input.form-control {
+  display: inline;
+  margin: 2px;
+  width: 20%;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  align-items: center;
+  text-align: center;
+  background-color: crimson;
+  color: white;
+}
+</style>
+

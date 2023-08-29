@@ -1,0 +1,13 @@
+.navbar{
+  display: inline-block;
+}
+a{
+  cursor:pointer;
+}
+ a:hover{
+  background-color: #fc6e7c;
+  cursor: grab;
+}
+.active{
+  background-color: #fa8e99;
+}

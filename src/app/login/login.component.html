@@ -1,0 +1,65 @@
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <!-- Tabs Titles -->
+          <h2 class="inactive underlineHover"><a navigate='../../assets/provisional.ico' rel="noopener noreferrer">Inicia sesion</a> </h2>
+          <h2 class="active"> Registrate </h2>
+        <!-- Icon -->
+        <div class="fadeIn first">
+          <!-- Cambiar imagen  -->
+          <img src="../../assets/icons/wolf.png" id="icon" alt="User Icon" />
+        </div>
+
+        <!-- Form con validadores, se enviará por inyección de servicios desde el .ts -->
+          <form [formGroup]="profileForm" method="POST" autocomplete="on">
+            <input type="text" id="correo" class="fadeIn second" name="correo" placeholder="Introduce un Correo Electronico" formControlName="correo">
+            <div *ngIf="this.profileForm.controls.correo.invalid && (this.profileForm.controls.correo.dirty || this.profileForm.controls.correo.touched)"
+            class="alert alert-danger">
+            El correo no es correcto
+          <div *ngIf="this.profileForm.controls.correo.errors?.['required']">
+            El correo es requerido.
+          </div>
+
+          <div *ngIf="this.profileForm.controls.correo.errors?.['forbiddenName']">
+            Name cannot be Bob.
+          </div>
+        </div>
+            <input type="text" id="login" class="fadeIn second" name="usuario" placeholder="Usuario" formControlName="usuario">
+
+            <div *ngIf="this.profileForm.controls.usuario.invalid && (this.profileForm.controls.usuario.dirty || this.profileForm.controls.usuario.touched)"
+            class="alert alert-danger">
+
+          <div *ngIf="this.profileForm.controls.usuario.errors?.['required']">
+            Name is required.
+          </div>
+          <div *ngIf="this.profileForm.controls.usuario.errors?.['minlength']">
+            Name must be at least 4 characters long.
+          </div>
+          <div *ngIf="this.profileForm.controls.usuario.errors?.['forbiddenName']">
+            Name cannot be Bob.
+          </div>
+        </div>
+
+            <input type="text" id="password" class="fadeIn third" name="login" placeholder="Contraseña (mín 8 carácteres)" formControlName="login">
+            <div *ngIf="this.profileForm.controls.login.invalid && (this.profileForm.controls.login.dirty || this.profileForm.controls.login.touched)"
+            class="alert alert-danger">
+
+          <div *ngIf="this.profileForm.controls.login.errors?.['required']">
+            Name is required.
+          </div>
+          <div *ngIf="this.profileForm.controls.login.errors?.['minlength']">
+            La contraseña debe tener al menos 8 carácteres
+          </div>
+          <div *ngIf="this.profileForm.controls.login.errors?.['forbiddenName']">
+            Name cannot be Bob.
+          </div>
+        </div>
+            <input type="submit" class="fadeIn fourth" value="Registrate" (click)="login()">
+          </form>
+
+          <!-- Remind Passowrd -->
+          <div id="formFooter">
+            <a class="underlineHover" href="forgot.html">Olvidaste la contraseña?</a>
+          </div>
+
+        </div>
+      </div>

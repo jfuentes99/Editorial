@@ -1,0 +1,61 @@
+<div class="row row-cols-md-8">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <div class="collapse navbar-collapse " id="categoriesNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <button class="reset" (click)="reset()"></button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<div class="row row-cols-md-8">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <div class="collapse navbar-collapse " id="categoriesNav">
+      <ul class="navbar-nav">
+        <li *ngFor="let a of comunidadesGet" class="nav-item">
+          <a class="nav-link" [ngClass]="{'active':filtroComunidades==a}" (click)="filtroComunidades=a">{{a}}</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<div class="row row-cols-md-8">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="categoriesNav">
+      <ul class="navbar-nav">
+        <li *ngFor="let c of provinciasGet" class="nav-item">
+          <a class="nav-link" [ngClass]="{'active':filtroProvincias==c}" (click)="filtroProvincias=c">{{c}}</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<div class="row row-cols-md-8">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="categoriesNav">
+      <ul class="navbar-nav">
+        <li *ngFor="let c of organismosGet" class="nav-item">
+          <a class="nav-link" [ngClass]="{'active':filtroOrganismos==c}" (click)="filtroOrganismos=c">{{c}}</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<!-- Buscador y filtros todavia no implementado -->
+<div class="input-group mb-3">
+  <input #buscador type="text"  class="form-control" placeholder="Buscar por nombre..." aria-label="Buscar por nombre..." aria-describedby="button-addon2"
+  (keyup)="filtroNom=buscador.value.trim()">
+  <button class="btn btn-outline-secondary" type="button" id="button-addon2">Buscar</button>
+</div>
+<div class="row row-cols-md-5">
+  <app-articulo-tarjeta *ngFor="let a of articulosGet
+  | buscador:filtroNom
+  | pipeorganismos:filtroOrganismos
+  | pipeprovincias:filtroProvincias
+  | pipecomunidades:filtroComunidades
+   "
+  [articulo]="a">
+  </app-articulo-tarjeta>
+</div>
